@@ -9,6 +9,7 @@ zoo.add("simba", new Lion("Simba", 5));
 zoo.add("dumbo", new Elephant("Dumbo", 10));
 
 const tousLesAnimaux = zoo.getAll();
+// Faire crier les animaux
 tousLesAnimaux.forEach((animal) => animal.crier());
 
 const nourrisseur = new Nourrisseur();
