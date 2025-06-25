@@ -1,11 +1,19 @@
-let nom: string = "Simba";
-let age: number = 3;
-let estVivant: boolean = true;
+import { Animal } from "./src/animals/Animal";
+import { Elephant } from "./src/animals/Elephant";
+import { Lion } from "./src/animals/Lion";
+import { Nourrisseur } from "./src/services/Nourisseur";
+import { ZooRepository } from "./src/services/ZooRepository";
 
-let variableInconnue: unknown;
-variableInconnue = 42;
+const zoo = new ZooRepository<Animal>();
+zoo.add("simba", new Lion("Simba", 5));
+zoo.add("dumbo", new Elephant("Dumbo", 10));
 
-let animaux: string[] = ["Lion", "Éléphant"];
-let position: [number, number] = [10, 20];
+const tousLesAnimaux = zoo.getAll();
+tousLesAnimaux.forEach((animal) => animal.crier());
 
-console.log(`${nom} a ${age} ans.`);
+const nourrisseur = new Nourrisseur();
+tousLesAnimaux.forEach((animal) => {
+  if ("nourrir" in animal) {
+    nourrisseur.nourrir(animal as any);
+  }
+});
