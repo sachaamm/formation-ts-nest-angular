@@ -1,5 +1,5 @@
 // animaux.controller.ts
-import { Controller, Get, Post, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Param, Body, Query } from '@nestjs/common';
 import { AnimauxService } from './animaux.service';
 import { CreateAnimalDto } from './dto/create-animal.dto';
 
@@ -17,8 +17,13 @@ export class AnimauxController {
     return this.service.findAll();
   }
 
-  @Get(':name')
-  findOne(@Param('name') name: string) {
-    return this.service.findOne(name);
+  @Get(':id')
+  findOne(@Param('id') id: number) {
+    return this.service.findOne(id);
+  }
+
+  @Get('search/name')
+  findByName(@Query('name') name: string) {
+    return this.service.findByName(name);
   }
 }

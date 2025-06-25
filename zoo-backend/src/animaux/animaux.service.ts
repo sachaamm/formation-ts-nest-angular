@@ -1,20 +1,31 @@
 // animaux.service.ts
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Animal } from './entities/animal.entity';
 import { CreateAnimalDto } from './dto/create-animal.dto';
 
 @Injectable()
 export class AnimauxService {
-  private animaux = [];
+  constructor(
+    @InjectRepository(Animal)
+    private readonly animalRepo: Repository<Animal>,
+  ) {}
 
   create(dto: CreateAnimalDto) {
-    this.animaux.push(dto);
+    const animal = this.animalRepo.create(dto);
+    return this.animalRepo.save(animal);
   }
 
   findAll() {
-    return this.animaux;
+    return this.animalRepo.find();
   }
 
-  findOne(name: string) {
-    return this.animaux.find((a) => a.name === name);
+  findOne(id: number) {
+    return this.animalRepo.findOneBy({ id });
+  }
+
+  findByName(name: string) {
+    return this.animalRepo.findOneBy({ name });
   }
 }
