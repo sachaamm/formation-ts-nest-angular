@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { AnimauxModule } from './animaux/animaux.module';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       inject: [ConfigService],
     }),
     AnimauxModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
