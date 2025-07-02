@@ -27,13 +27,13 @@ export class AnimauxController {
     return this.service.findAll();
   }
 
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.service.findOne(id);
   }
 
-  // @ApiBearerAuth()
-  // @UseGuards(AuthGuard('jwt'))
   @Get('search/name')
   findByName(@Query('name') name: string) {
     return this.service.findByName(name);
