@@ -2,6 +2,11 @@
   <span>🐾 Zoo 🐾</span>
   <span class="spacer"></span>
 
+  <button mat-button routerLink="/">Accueil</button>
+  <button mat-button routerLink="/liste">Animaux</button>
+
+  <span class="spacer"></span>
+
   @if (auth.isAuthenticated$ | async) {
   <span class="username"> {{ username }} </span>
   <button mat-button (click)="logout()">Déconnexion</button>

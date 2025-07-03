@@ -11,12 +11,18 @@ export class RolesGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
 
   canActivate(context: ExecutionContext): boolean {
-    const requiredRoles = this.reflector.getAllAndOverride<string[]>('roles', [
-      context.getHandler(),
-      context.getClass(),
-    ]);
+    const requiredRoles =
+      this.reflector.getAllAndOverride<string[]>('roles', [
+        context.getHandler(),
+        context.getClass(),
+      ]) || [];
     const { user } = context.switchToHttp().getRequest();
-    return requiredRoles ? requiredRoles.includes(user?.role) : true;
+    const roles: string[] = user['https://zooapi.com/roles'];
+
+    const hasAnyRole = () =>
+      requiredRoles.some((role) => roles?.includes(role));
+
+    return requiredRoles ? hasAnyRole() : true;
   }
 }
 

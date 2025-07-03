@@ -12,7 +12,7 @@ import { AnimauxService } from './animaux.service';
 import { CreateAnimalDto } from './dto/create-animal.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { Roles } from 'src/auth/roles.guard';
+import { Roles, RolesGuard } from 'src/auth/roles.guard';
 
 @Controller('animaux')
 export class AnimauxController {
@@ -29,8 +29,8 @@ export class AnimauxController {
   }
 
   @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
-  @Roles('veterinaire')
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles('veterinaire', 'gardien')
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.service.findOne(id);

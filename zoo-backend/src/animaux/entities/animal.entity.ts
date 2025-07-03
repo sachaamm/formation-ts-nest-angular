@@ -11,4 +11,7 @@ export class Animal {
 
   @Column()
   species: string;
+
+  @Column({ default: 100 })
+  health: number;
 }
