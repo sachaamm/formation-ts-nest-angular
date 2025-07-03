@@ -1,5 +1,9 @@
 <h1>Liste des animaux</h1>
 
+<button mat-raised-button color="primary" (click)="ajouterAnimal()">
+  Ajouter un animal
+</button>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <!-- Nom -->
   <ng-container matColumnDef="name">
@@ -31,6 +35,10 @@
         [routerLink]="['/details', element.id]"
       >
         Détails
+      </button>
+
+      <button mat-button color="warn" (click)="relacherAnimal(element.id)">
+        Relacher
       </button>
     </td>
   </ng-container>

@@ -1,14 +1,16 @@
-// src/animaux/dto/create-animal.dto.ts
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, Length } from 'class-validator';
 
-export class CreateAnimalDto {
+export class AnimalDto {
+  @ApiProperty({
+    description: 'The unique identifier of the animal',
+    example: 1,
+  })
+  id: number;
+
   @ApiProperty({
     description: 'The name of the animal',
     example: 'Rex',
   })
-  @IsString()
-  @Length(3, 20)
   name: string;
 
   @ApiProperty({
@@ -16,4 +18,10 @@ export class CreateAnimalDto {
     example: 'Dog',
   })
   species: string;
+
+  @ApiProperty({
+    description: 'The health of the animal',
+    example: 100,
+  })
+  health: number;
 }

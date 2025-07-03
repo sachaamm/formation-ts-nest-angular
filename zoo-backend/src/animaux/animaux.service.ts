@@ -28,4 +28,8 @@ export class AnimauxService {
   findByName(name: string) {
     return this.animalRepo.findOneBy({ name });
   }
+
+  deleteWithId(id: number) {
+    return this.animalRepo.delete(id);
+  }
 }
