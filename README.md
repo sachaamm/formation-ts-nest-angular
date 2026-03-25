@@ -1,6 +1,7 @@
 # Formation TypeScript / NestJS / Angular
 
-Projet de formation fullstack autour de la gestion d'un zoo. Le parcours complet est disponible ici :
+Projet de formation fullstack autour de la gestion d'un zoo. 
+Le parcours de formation complet est disponible ici :
 [Notion - TypeScript / NestJS / Angular](https://www.notion.so/Typescript-NestJs-Angular-21c4d2c7e08d80a8b384d439c6383499)
 
 ## Structure du projet
