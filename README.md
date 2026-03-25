@@ -1,6 +1,6 @@
 # Formation TypeScript / NestJS / Angular
 
-Projet de formation fullstack autour de la gestion d'un zoo. 
+Projet de formation fullstack autour de la gestion d'un zoo pour les étudiants de 2ème année de l'ESGI. 
 Le parcours de formation complet est disponible ici :
 [Notion - TypeScript / NestJS / Angular](https://www.notion.so/Typescript-NestJs-Angular-21c4d2c7e08d80a8b384d439c6383499)
 
